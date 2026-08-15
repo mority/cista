@@ -22,7 +22,7 @@ struct basic_vecvec {
   struct bucket final {
     using value_type = data_value_type;
     using iterator = typename DataVec::iterator;
-    using const_iterator = typename DataVec::iterator;
+    using const_iterator = const_iterator_t<DataVec>;
 
     using iterator_category = std::random_access_iterator_tag;
     using difference_type = std::ptrdiff_t;
@@ -126,10 +126,12 @@ struct basic_vecvec {
     CISTA_CUDA_COMPAT const_iterator end() const {
       return map_->data_.begin() + bucket_end_idx();
     }
-    CISTA_CUDA_COMPAT friend iterator begin(bucket const& b) {
+    CISTA_CUDA_COMPAT friend const_iterator begin(bucket const& b) {
       return b.begin();
     }
-    CISTA_CUDA_COMPAT friend iterator end(bucket const& b) { return b.end(); }
+    CISTA_CUDA_COMPAT friend const_iterator end(bucket const& b) {
+      return b.end();
+    }
     CISTA_CUDA_COMPAT friend iterator begin(bucket& b) { return b.begin(); }
     CISTA_CUDA_COMPAT friend iterator end(bucket& b) { return b.end(); }
 
