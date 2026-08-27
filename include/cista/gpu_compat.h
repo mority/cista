@@ -22,7 +22,6 @@
 // need no GPU compiler.
 
 #if defined(__HIP__) || defined(__CUDA_ARCH__)
-#define CISTA_GPU_DEVICE_COMPILE 1
 #define CISTA_GPU_COMPAT __host__ __device__
 #define CISTA_GPU_DEVICE_COMPAT __device__
 #else
