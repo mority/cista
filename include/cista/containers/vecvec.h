@@ -33,9 +33,7 @@ struct basic_vecvec {
         : map_{map}, i_{to_idx(i)} {}
 
     friend CISTA_GPU_COMPAT data_value_type* data(bucket b) { return &b[0]; }
-    friend CISTA_GPU_COMPAT index_value_type size(bucket b) {
-      return b.size();
-    }
+    friend CISTA_GPU_COMPAT index_value_type size(bucket b) { return b.size(); }
 
     CISTA_GPU_COMPAT data_value_type const* data() const {
       return empty() ? nullptr : &front();
@@ -171,7 +169,7 @@ struct basic_vecvec {
       return tmp;
     }
     CISTA_GPU_COMPAT friend difference_type operator-(bucket const& a,
-                                                       bucket const& b) {
+                                                      bucket const& b) {
       assert(a.map_ == b.map_);
       return a.i_ - b.i_;
     }
@@ -204,7 +202,7 @@ struct basic_vecvec {
     using reference = std::add_lvalue_reference<value_type>;
 
     CISTA_GPU_COMPAT const_bucket(basic_vecvec const* map,
-                                   index_value_type const i)
+                                  index_value_type const i)
         : map_{map}, i_{to_idx(i)} {}
 
     friend CISTA_GPU_COMPAT data_value_type const* data(const_bucket b) {
@@ -305,7 +303,7 @@ struct basic_vecvec {
       return tmp;
     }
     friend CISTA_GPU_COMPAT difference_type operator-(const_bucket const& a,
-                                                       const_bucket const& b) {
+                                                      const_bucket const& b) {
       assert(a.map_ == b.map_);
       return a.i_ - b.i_;
     }
