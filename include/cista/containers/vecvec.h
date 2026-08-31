@@ -126,14 +126,8 @@ struct basic_vecvec {
     CISTA_CUDA_COMPAT const_iterator end() const {
       return map_->data_.begin() + bucket_end_idx();
     }
-    CISTA_CUDA_COMPAT friend const_iterator begin(bucket const& b) {
-      return b.begin();
-    }
-    CISTA_CUDA_COMPAT friend const_iterator end(bucket const& b) {
-      return b.end();
-    }
-    CISTA_CUDA_COMPAT friend iterator begin(bucket& b) { return b.begin(); }
-    CISTA_CUDA_COMPAT friend iterator end(bucket& b) { return b.end(); }
+    CISTA_CUDA_COMPAT friend iterator begin(bucket b) { return b.begin(); }
+    CISTA_CUDA_COMPAT friend iterator end(bucket b) { return b.end(); }
 
     friend bool operator==(bucket const& a, bucket const& b) {
       assert(a.map_ == b.map_);
